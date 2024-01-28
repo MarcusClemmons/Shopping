@@ -19,7 +19,7 @@ function Cart() {
             }
     
             try {
-                const userDocUrl = `https://firestore.googleapis.com/v1/projects/ecommerce-app-c5530/databases/(default)/documents/users/${userId}`;
+                const userDocUrl = `https://firestore.googleapis.com/v1/projects/shopping-c66b2/databases/(default)/documents/users/${userId}`;
                 const response = await fetch(userDocUrl, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
@@ -84,7 +84,7 @@ function Cart() {
 
         // Update quantity in Realtime Database
         const userId = localStorage.getItem("userId");
-        const summaryUrl = `https://ecommerce-app-c5530-default-rtdb.firebaseio.com/productSummary/${userId}/${productId}.json`;
+        const summaryUrl = `https://shopping-c66b2-default-rtdb.firebaseio.com/productSummary/${userId}/${productId}.json`;
 
         try {
             const updateResponse = await fetch(summaryUrl, {
@@ -116,7 +116,7 @@ function Cart() {
 
         try {
             // Fetch the current cart from Firestore
-            const userDocUrl = `https://firestore.googleapis.com/v1/projects/ecommerce-app-c5530/databases/(default)/documents/users/${userId}`;
+            const userDocUrl = `https://firestore.googleapis.com/v1/projects/shopping-c66b2/databases/(default)/documents/users/${userId}`;
             const userDocResponse = await fetch(userDocUrl, {
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -146,7 +146,7 @@ function Cart() {
             });
 
             // Delete from Realtime Database product summary
-            const summaryUrl = `https://ecommerce-app-c5530-default-rtdb.firebaseio.com/productSummary/${userId}/${productId}.json`;
+            const summaryUrl = `https://shopping-c66b2-default-rtdb.firebaseio.com/productSummary/${userId}/${productId}.json`;
             await fetch(summaryUrl, { method: "DELETE" });
 
             // Update local state
@@ -191,7 +191,7 @@ function Cart() {
             };
     
             // Save the order to Firebase Realtime Database
-            const ordersUrl = `https://ecommerce-app-c5530-default-rtdb.firebaseio.com/orders.json?auth=${token}`;
+            const ordersUrl = `https://shopping-c66b2-default-rtdb.firebaseio.com/orders.json?auth=${token}`;
             const orderResponse = await fetch(ordersUrl, {
                 method: 'POST',
                 headers: {
@@ -205,7 +205,7 @@ function Cart() {
             }
     
             // Clear the user's cart in Firestore
-            const clearCartUrl = `https://firestore.googleapis.com/v1/projects/ecommerce-app-c5530/databases/(default)/documents/users/${userId}`;
+            const clearCartUrl = `https://firestore.googleapis.com/v1/projects/shopping-c66b2/databases/(default)/documents/users/${userId}`;
             await fetch(clearCartUrl, {
                 method: 'PATCH',
                 headers: {
@@ -221,7 +221,7 @@ function Cart() {
     
             // Clear the product summary in Realtime Database
             for (let item of cartItems) {
-                const summaryUrl = `https://ecommerce-app-c5530-default-rtdb.firebaseio.com/productSummary/${userId}/${item.productId}.json`;
+                const summaryUrl = `https://shopping-c66b2-default-rtdb.firebaseio.com/productSummary/${userId}/${item.productId}.json`;
                 await fetch(summaryUrl, { method: 'DELETE' });
             }
     

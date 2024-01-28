@@ -12,7 +12,7 @@ function PastOrders() {
 
             if (!userId) return;
 
-            const ordersUrl = `https://ecommerce-app-c5530-default-rtdb.firebaseio.com/orders.json?auth=${token}`;
+            const ordersUrl = `https://shopping-c66b2-default-rtdb.firebaseio.com/orders.json?auth=${token}`;
 
             try {
                 const response = await fetch(ordersUrl);

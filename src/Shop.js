@@ -10,7 +10,7 @@ function Shop() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('https://firestore.googleapis.com/v1/projects/ecommerce-app-c5530/databases/(default)/documents/products');
+                const response = await fetch('https://firestore.googleapis.com/v1/projects/shopping-c66b2/databases/(default)/documents/products');
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -56,7 +56,7 @@ function Shop() {
     
         try {
             // Fetch user's cart from Firestore
-            const userDocUrl = `https://firestore.googleapis.com/v1/projects/ecommerce-app-c5530/databases/(default)/documents/users/${userId}`;
+            const userDocUrl = `https://firestore.googleapis.com/v1/projects/shopping-c66b2/databases/(default)/documents/users/${userId}`;
             const userDocResponse = await fetch(userDocUrl, {
                 headers: {
                     'Authorization': `Bearer ${token}`

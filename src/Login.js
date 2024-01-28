@@ -5,7 +5,7 @@ import user_icon from './Assets/person.png';
 import email_icon from './Assets/email.png';
 import password_icon from './Assets/password.png';
 
-const API_KEY = "AIzaSyDQd19JPpXbwXQuV-ACO2NrKOJVBmAQanE"; // Your Firebase API Key
+const API_KEY = "AIzaSyBRofV0Iqo9WxxQA__z7B2rwbIJ6I7H8ak"; // Your Firebase API Key
 
 function Login() {
     const [action, setAction] = useState('Log In');
@@ -29,7 +29,7 @@ function Login() {
             }
 
             // Create a user document in Firestore
-            const userDocUrl = `https://firestore.googleapis.com/v1/projects/ecommerce-app-c5530/databases/(default)/documents/users/${data.localId}`;
+            const userDocUrl = `https://firestore.googleapis.com/v1/projects/shopping-c66b2/databases/(default)/documents/users/${data.localId}`;
             await fetch(userDocUrl, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
